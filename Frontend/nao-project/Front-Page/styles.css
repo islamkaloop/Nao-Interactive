@@ -1,0 +1,33 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body { 
+        background: url("./background.png") no-repeat top;
+        background-position-x: -210px;
+        background-position-y: 0px;
+    }
+
+.dot {
+  height: 120px;
+  width: 120px;
+  background-color: #FFD300;
+  margin-top:10px;
+  margin-left: 145px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn-xlarge {
+    padding: 10px 60px;
+    font-size: 25px; 
+    line-height: normal;
+}
+
+.container{
+    margin-left:200px;
+    margin-top:50px;
+}

@@ -1,0 +1,145 @@
+/* .speech-bubble {
+	position: relative;
+	background: #ffff;
+		border-radius: .2em; 	
+		border: 4px solid rgb(120, 194, 255);
+    border-radius: 20px;
+    
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 25px solid transparent;
+	border-right-color: #a8ecff;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -11.5px;
+	margin-left: -23px;
+
+}
+
+#worksapce{
+	border-radius: 20px;
+	color: #00adbc;
+}
+
+
+body{
+	 background-color:rgb(255, 255, 255); 
+	 padding-left: -15px;
+}
+
+.material-icons.md-18 { font-size: 20px; } */
+h1 {
+	 font-family: Georgia, Times, "Times New Roman", serif;
+		font-size: 24px; font-style: normal;
+		 font-variant: normal;
+		 font-weight: 700; line-height: 26.4px; } 
+
+h3 { font-family: Georgia, Times, "Times New Roman", serif; 
+	font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
+	 p { font-family: Georgia, Times, "Times New Roman", serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } 
+	 blockquote { font-family: Georgia, Times, "Times New Roman", serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
+	 pre { font-family: Georgia, Times, "Times New Roman", serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+.dot {
+  height: 30px;
+  width: 30px;
+  background-color: #FFD300;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+body{
+	background-color:rgb(239, 234, 247);
+}
+
+.speech-bubble {
+	position: relative;
+	background: rgb(255, 255, 255);
+	border: 4px solid #5bb7e6e1;
+
+	border-radius: .4em;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 19px solid transparent;
+
+	border-right-color: #5bb7e6e1;
+	border-left: 0;
+	margin-top: -19px;
+	margin-left: -19px;
+}
+.material-icons.md-18 { font-size: 20px; margin-top:-2px;	 }
+
+.banner{
+	/* background:url("../Workspace/blockly/Nao images/NAO-Background.png") no-repeat; */
+	background-position-x: 330px;
+	background-position-y: 200px;
+	/* background-color: rgba(red, green, rgb(16, 16, 29), 0.2); */
+	background-size: 300px; 
+	background-color: rgb(239, 235, 247)
+}
+
+.gift{
+	position: fixed;
+	z-index: 1;
+	display: none;
+}
+
+.pp { 
+	font-family: 'WaltographRegular';
+	font-weight: normal; 
+	font-style: normal; 
+	font-size: 80px;
+	margin-left: 700px; 
+	position: fixed;
+z-index: 2;
+margin-top: 180px;
+}
+
+.arrows{
+	width: 48px;
+	height: 48px;
+	border-color: #000;
+	position: absolute;
+	top: 50%;
+	margin-top: -31px;
+}
+
+.prev{
+	border-bottom: 6px solid;
+	border-left: 6px solid;
+	transform: rotate(45deg);
+	left: 10px;
+}
+
+	
+.next{
+	border-bottom: 6px solid;
+	border-left: 6px solid;
+	transform: rotate(-135deg);
+	right: 10px;
+}
+
+.banner10{
+	margin-left:300px; 
+	margin-top:80px;
+}
+
+#example{
+		background:url("./backsss.png") no-repeat;
+		 background-size: 500px;
+		/* height: 1000px;
+		width: 200px;  */
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blockly</title>
+	<link rel="stylesheet" href="./styles/styles.css">
+	<script src="./blockly_compressed.js"></script>
+	<script src="./blocks_compressed.js"></script>
+	<script src="./blockly/generators/python.js"></script>
+	<script src="./python_compressed.js"></script>
+	<script src="./blockly/generators/python.js"></script>
+	<script src="./blockly/generators/python/loops.js"></script>
+	<script src="./blockly/generators/python/math.js"></script>
+	<script src="./blockly/generators/python/colour.js"></script>
+	<script src="./blockly/generators/python/logic.js"></script>
+	<script src="./blockly/generators/python/text.js"></script>
+	<script src="./blockly/generators/python/NaoActions.js"></script>
+	<script src="./blockly/generators/pseudo.js"></script>
+	<script src="./blockly/generators/pseudo/loops.js"></script>
+	<script src="./blockly/generators/pseudo/math.js"></script>
+	<script src="./blockly/generators/pseudo/color.js"></script>
+	<script src="./blockly/generators/pseudo/logic.js"></script>
+	<script src="./blockly/generators/pseudo/text.js"></script>
+	<script src="./blockly/generators/pseudo/NaoActions.js"></script>
+	<script src="./blockly/blocks/NAO.js"></script>
+	<script src="./blockly/msg/js/ar.js"></script>
+	<script src="./theme.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-color: #fff;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 140%;
+        }
+
+        table {
+            height: 90%;
+            width: 100%;
+        }
+        button {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+        #blocklyArea {
+            height: 99%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <td id="blocklyArea" dir="rtl">
+            </td>
+        </tr>
+    </table>
+
+    <div id="blocklyDiv" dir="rtl" style="position: absolute"></div>
+
+    <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none; ">
+        <category name="حركة" colour="%{BKY_Actions_HUE}">
+			<block type="stand"></block>
+			<block type="sit"></block>
+			<block type="crouch"></block>
+			<block type="Lying_Belly"></block>
+			<block type="Lying_Back"></block>
+			<block type="walk"></block>
+			<block type="turn"></block>
+			<block type="open_hand"></block>
+			<block type="close_hand"></block>
+			<block type="talk"></block>...
+			<block type="wave"></block>
+			<block type="wipe"></block>
+			<block type="Bow"></block>
+			<block type="Blow_kiss"></block>
+			<block type="Macarena"></block>
+			<block type="taichi"></block>
+			<block type="Pushups"></block>
+			<block type="blink"></block>
+
+        </category>
+        <category name="أجهزة الاستشعار" colour="180">
+            <block type="head_sensor"></block>
+            <block type="hand_sensor"></block>
+            <block type="bumper_sensor"></block>
+            <block type="ultrasonic_sensor"></block>
+        </category>
+
+        <category name="منطق" colour="%{BKY_LOGIC_HUE}">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+        </category>
+        <category name="الحلقات" colour="%{BKY_LOOPS_HUE}">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+        </category>
+        <category name="رياضيات" colour="%{BKY_MATH_HUE}">
+            <block type="math_number">
+                <field name="NUM">123</field>
+            </block>
+            <block type="math_arithmetic"></block>-
+            <block type="math_single"></block>
+        </category>
+        <category name="نص" colour="%{BKY_TEXTS_HUE}">
+            <block type="text"></block>
+            <block type="text_length"></block>
+            <block type="text_print"></block>
+        </category>
+        <category name="الاضواء" colour="270">
+            <block type="random_eyes"></block>
+			<block type="rasta"></block>
+			<block type="set_color"></block>
+        </category>
+        <category name="متغيرات" colour="330" custom="VARIABLE"></category>
+        <category name="التعرف على الصوت" colour="290">
+            <block type="voice_reco"></block>
+            <block type="seq_voice_reco"></block>
+		</category>
+    </xml>
+	<div style="text-align: center;">
+        <button onclick="showCode()">أظهر بايثون كود</button>
+        <button onclick="runCode()">تشغيل على الروبوت</button>
+        <button onclick="window.location.href='index.html'">النسخة الأنجليزية</button>
+    </div>
+
+    <script>
+
+            var blocklyArea = document.getElementById('blocklyArea');
+            var blocklyDiv = document.getElementById('blocklyDiv');
+            var blockName="start";
+            //var theme = Blockly.Theme(BlockStyles, categoryStyles);
+            var demoWorkspace = Blockly.inject(blocklyDiv,
+                        {
+                    
+                    //theme: Blockly.Theme(BlockStyles, categoryStyles),
+    
+                    media: './blockly/media/',
+                    rtl: true,
+                    grid:
+                    {
+                        spacing: 30,
+                        length: 4,
+                        colour: '#ccc',
+                        snap: true
+                    },
+                    zoom:
+                    {
+                        controls: true,
+                        wheel: true,
+                        startScale: 1.0,
+                        maxScale: 3,
+                        minScale: 0.3,
+                        scaleSpeed: 1.2
+                    },
+                    trashcan: true,
+                    toolbox: document.getElementById('toolbox'),
+                    
+                });
+                themeSettings();
+                var newBlock = demoWorkspace.newBlock(blockName);
+    
+                newBlock.initSvg();
+                newBlock.render();
+            var onresize = function (e) {
+                // Compute the absolute coordinates and dimensions of blocklyArea.
+                var element = blocklyArea;
+                var x = 0;
+                var y = 0;
+                do {
+                    x += element.offsetLeft;
+                    y += element.offsetTop;
+                    element = element.offsetParent;
+                } while (element);
+                // Position blocklyDiv over blocklyArea.
+                blocklyDiv.style.left = x + 'px';
+                blocklyDiv.style.top = y + 'px';
+                blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+                blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+                Blockly.svgResize(demoWorkspace);
+            };
+    
+            window.addEventListener('resize', onresize, false);
+            onresize();
+            Blockly.svgResize(demoWorkspace);
+        </script>
+        <script>
+            function showCode() {
+                var code = Blockly.Python.workspaceToCode(demoWorkspace);
+                Blockly.Python.INFINITE_LOOP_TRAP = null;
+                alert(code)
+            }
+            function PseudoCode(){
+                var code=Blockly.Pseudo.workspaceToCode(demoWorkspace);
+                Blockly.Pseudo.INFINITE_LOOP_TRAP = null;
+                alert(code)
+            }
+            var appNo = 0
+            function runCode() {
+                Blockly.Python.INFINITE_LOOP_TRAP = null;
+                var code = Blockly.Python.workspaceToCode(demoWorkspace);
+                var code1 = code.split("\n")
+                code = ""
+                for (var i=0;i<code1.length-1;i++){
+                    if(code1[i]=="Nao=generate()")
+                        code = code + 'Nao=generate("Arabic")'+"\n"
+                    else 
+                        code = code + code1[i] +"\n"
+                }
+                appNo++
+                var o = new Object();
+                o.Code = code;
+                console.log(o);
+                var jsonArray = JSON.parse(JSON.stringify(o))
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "http://127.0.0.1:5000/savecode",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "cache-control": "no-cache",
+                    },
+                    "data": JSON.stringify(o),
+                    "dataType": 'json',
+                }
+    
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
+            }
+    
+        </script>
+        </script>    
+</body>
+
+</html>
